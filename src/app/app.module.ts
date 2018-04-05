@@ -17,7 +17,6 @@ import { AppConfig } from './app.config';
 import { AlertService } from './services/alert/alert.service';
 import { UserService } from './services/user/user.service';
 import { AuthGuard } from './guards/auth.guard';
-import { MailService } from './services/mail/mail.service';
 
 
 // @NgModule decorator with its metadata
@@ -42,7 +41,6 @@ import { MailService } from './services/mail/mail.service';
         AuthenticationService, 
         AlertService, 
         UserService, 
-        MailService,
         AuthGuard],
     bootstrap: [AppComponent]
 })
