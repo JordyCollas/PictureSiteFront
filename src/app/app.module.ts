@@ -18,6 +18,7 @@ import { AlertService } from './services/alert/alert.service';
 import { UserService } from './services/user/user.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminComponent } from './admin/admin.component';
+import { AdminGuard } from './guards/admin.guard';
 
 
 // @NgModule decorator with its metadata
@@ -42,7 +43,8 @@ import { AdminComponent } from './admin/admin.component';
         AuthenticationService, 
         AlertService, 
         UserService, 
-        AuthGuard],
+        AuthGuard,
+        AdminGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,14 +1,24 @@
 <div class="col-md-6 col-md-offset-3">
   <h1>Hi Jordy!</h1>
   <h3>These are all registered users:</h3>
-
-<div class="card" style="width: 18rem;" *ngFor="let user of users">
-  <div class="card-body">
-    <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">{{user.email}}</li>
-    </ul>  
-  </div>
 </div>
-
+<button (click)="save()">Save</button>
+<div class="d-flex flex-wrap">
+  <div class="card" style="width: 19rem;" *ngFor="let user of users">
+    <div class="card-body">
+      <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Email: {{user.email}}</li>
+        <li class="list-group-item">Is accepted:
+            <input type="checkbox" [(ngModel)]="user.isAccepted"> </li>
+        <li class="list-group-item">Can watch full size:
+          <input type="checkbox" [(ngModel)]="user.canWatchFullSize"> </li>
+        <li class="list-group-item">Can download:
+          <input type="checkbox" [(ngModel)]="user.canDownload"> </li>
+        <li class="list-group-item">Is admin:
+          <input type="checkbox" [(ngModel)]="user.isAdmin"> </li>
+          
+      </ul>
+    </div>
+  </div>
 </div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user/user.service';
 import { User } from '../models/User';
 import { Observable } from 'rxjs/Observable';
+import { AlertService } from '../services/alert/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private userservice: UserService) { }
+  constructor(private userService: UserService, private alertService: AlertService, private router: Router) { }
 
   private users: Observable<User>;
 
@@ -19,9 +21,19 @@ export class AdminComponent implements OnInit {
   }
 
   private getAllUsers() {
-    this.userservice.getAll().subscribe(users => this.users = users)
+    this.userService.getAll().subscribe(users => this.users = users)
   }
 
-  
+  private save(){
+    this.userService.Update(this.users)
+    .subscribe(
+        data => {
+            this.alertService.success('Update successful', false);
+            this.router.navigate(['/admin']);
+        },
+        error => {
+            this.alertService.error(error._body);
+        });
+  }
 
 }
