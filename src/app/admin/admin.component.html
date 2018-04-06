@@ -1,0 +1,16 @@
+<div class="col-md-6 col-md-offset-3">
+  <h1>Hi Jordy!</h1>
+  <h3>These are all registered users:</h3>
+
+<div class="card" style="width: 18rem;" *ngFor="let user of users">
+  <div class="card-body">
+    <h5 class="card-title">{{user.firstname}} {{user.lastname}}</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{user.email}}</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul>  
+  </div>
+</div>
+
+</div>

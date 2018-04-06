@@ -17,6 +17,7 @@ import { AppConfig } from './app.config';
 import { AlertService } from './services/alert/alert.service';
 import { UserService } from './services/user/user.service';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminComponent } from './admin/admin.component';
 
 
 // @NgModule decorator with its metadata
@@ -28,7 +29,7 @@ import { AuthGuard } from './guards/auth.guard';
         RegisterSuccessComponent, 
         LoginComponent, 
         HomeComponent, 
-        HeaderComponent
+        HeaderComponent, AdminComponent
     ],
     imports: [
         BrowserModule,
