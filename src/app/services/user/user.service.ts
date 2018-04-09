@@ -23,7 +23,7 @@ export class UserService {
         return this.http.post(this.config.apiUrl + '/users/register', user, this.jwt());
     }
 
-    Update(users: Observable<User>){
+    Update(users: User[]){
         return this.http.post(this.config.apiUrl + '/users/update', users, this.jwt());
     }
     // private helper methods

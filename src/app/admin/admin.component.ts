@@ -15,7 +15,8 @@ export class AdminComponent implements OnInit {
   constructor(private userService: UserService, private alertService: AlertService, private router: Router) { }
 
   private users: Observable<User>;
-
+    private changedUsers: User[] = [];
+  
   ngOnInit() {
     this.getAllUsers();
   }
@@ -24,8 +25,14 @@ export class AdminComponent implements OnInit {
     this.userService.getAll().subscribe(users => this.users = users)
   }
 
+  private AddToChanged(user: User){
+    if(this.changedUsers.findIndex(x => x.userName === user.userName) === -1){
+      this.changedUsers.push(user);
+    }
+  }
+
   private save(){
-    this.userService.Update(this.users)
+    this.userService.Update(this.changedUsers)
     .subscribe(
         data => {
             this.alertService.success('Update successful', false);

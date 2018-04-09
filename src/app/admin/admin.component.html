@@ -10,13 +10,13 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Email: {{user.email}}</li>
         <li class="list-group-item">Is accepted:
-            <input type="checkbox" [(ngModel)]="user.isAccepted"> </li>
+            <input type="checkbox" [(ngModel)]="user.isAccepted" (ngModelChange)="AddToChanged(user)"> </li>
         <li class="list-group-item">Can watch full size:
-          <input type="checkbox" [(ngModel)]="user.canWatchFullSize"> </li>
+          <input type="checkbox" [(ngModel)]="user.canWatchFullSize" (ngModelChange)="AddToChanged(user)"> </li>
         <li class="list-group-item">Can download:
-          <input type="checkbox" [(ngModel)]="user.canDownload"> </li>
+          <input type="checkbox" [(ngModel)]="user.canDownload" (ngModelChange)="AddToChanged(user)"> </li>
         <li class="list-group-item">Is admin:
-          <input type="checkbox" [(ngModel)]="user.isAdmin"> </li>
+          <input type="checkbox" [(ngModel)]="user.isAdmin" (ngModelChange)="AddToChanged(user)"> </li>
           
       </ul>
     </div>
