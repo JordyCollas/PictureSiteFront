@@ -7,6 +7,8 @@ import { RegisterSuccessComponent } from './register/register-success/register-s
 import { AuthGuard } from './guards/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './guards/admin.guard';
+import { FoldersComponent } from './folders/folders.component';
+import { PicturesComponent } from './pictures/pictures.component';
 
 const appRoutes: Routes = [
    { path: '', component: HomeComponent},
@@ -14,6 +16,9 @@ const appRoutes: Routes = [
    { path: 'register', component: RegisterComponent },
    { path: 'registerSuccess', component: RegisterSuccessComponent},
    { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
+   { path: 'folders', component: FoldersComponent},
+   { path: 'pictures', component: PicturesComponent},   
+   { path: 'pictures/:folderName', component: PicturesComponent},
    
    // otherwise redirect to home
    { path: '**', redirectTo: '' }

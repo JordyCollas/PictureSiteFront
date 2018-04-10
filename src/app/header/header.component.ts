@@ -22,6 +22,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/register']); 
   }
 
+  Folders(){
+      this.router.navigate(['/folders'])
+  }
+
   Login(){
     this.router.navigate(['/login']);
   }

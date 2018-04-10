@@ -19,6 +19,9 @@ import { UserService } from './services/user/user.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './guards/admin.guard';
+import { FoldersComponent } from './folders/folders.component';
+import { PictureService } from './services/picture/picture.service';
+import { PicturesComponent } from './pictures/pictures.component';
 
 
 // @NgModule decorator with its metadata
@@ -30,7 +33,10 @@ import { AdminGuard } from './guards/admin.guard';
         RegisterSuccessComponent, 
         LoginComponent, 
         HomeComponent, 
-        HeaderComponent, AdminComponent
+        HeaderComponent, 
+        AdminComponent, 
+        FoldersComponent, 
+        PicturesComponent
     ],
     imports: [
         BrowserModule,
@@ -43,6 +49,7 @@ import { AdminGuard } from './guards/admin.guard';
         AuthenticationService, 
         AlertService, 
         UserService, 
+        PictureService,
         AuthGuard,
         AdminGuard],
     bootstrap: [AppComponent]

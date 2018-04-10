@@ -1,0 +1,10 @@
+<div class=" d-flex flex-wrap">
+    <div class="card" style="width: 18rem;" *ngFor="let folder of allFolders">
+        <img class="card-img-top" [src]="GetPhoto(folder)" alt="Card image cap">
+        <div class="card-body" (click)="GetPicturesFromFolder(folder.folderName)">
+            <h5 class="card-title"> {{folder.folderName}} </h5>
+            <p class="card-text">Lorem ipsum</p>
+            <div (click)="GetPicturesFromFolder(folder.folderName)" class="btn btn-primary">See photo's</div>
+        </div>
+    </div>
+</div>
