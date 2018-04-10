@@ -15,11 +15,13 @@ export class AuthenticationService  implements OnInit  {
     public isLoggedIn$: Subject<boolean>;
 
     constructor(private http: Http, private config: AppConfig, private router: Router) { 
-        this.isLoggedIn$ = new Subject<boolean>()
+        this.isLoggedIn$ = new Subject<boolean>();
     }
  
-    ngOnInit(){
-        this.isLoggedIn$.next(false)
+    ngOnInit(){ }
+
+    isLoggedIn(): boolean {
+        return !!(localStorage.getItem('currentUser'));
     }
 
     login(username: string, password: string) {

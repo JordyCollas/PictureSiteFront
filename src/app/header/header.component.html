@@ -9,9 +9,9 @@
       </li>
     </ul>
     <!-- <button class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Register()">Register</button>  -->
-    <button *ngIf="!(isLoggedIn$|async)" class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Register()">Register</button> 
-    <button *ngIf="!(isLoggedIn$|async)" class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Login()">Login</button>
+    <button *ngIf="!(authService.isLoggedIn())" class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Register()">Register</button> 
+    <button *ngIf="!(authService.isLoggedIn())" class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Login()">Login</button>
     
-    <button *ngIf="(isLoggedIn$|async)" class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Logout()">Logout</button>
+    <button *ngIf="(authService.isLoggedIn())" class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Logout()">Logout</button>
   </div>
 </nav>

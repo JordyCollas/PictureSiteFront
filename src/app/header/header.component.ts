@@ -12,12 +12,13 @@ import { Observable } from 'rxjs/Observable';
 export class HeaderComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
 
-  constructor(private router: Router, public authService: AuthenticationService) {}
+  constructor(private router: Router, private authService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
   }
   
+
   Register(){
     this.router.navigate(['/register']); 
   }
