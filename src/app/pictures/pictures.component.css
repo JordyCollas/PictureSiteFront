@@ -11,6 +11,25 @@
     padding: 3px 0;
 }
 
+@media (max-width: 1000px) {
+    .gal {
+        -webkit-column-count: 3;
+        /* Chrome, Safari, Opera */
+        -moz-column-count: 3;
+        /* Firefox */
+        column-count: 3;
+    }
+}
+@media (max-width: 700px) {
+    .gal {
+        -webkit-column-count: 2;
+        /* Chrome, Safari, Opera */
+        -moz-column-count: 2;
+        /* Firefox */
+        column-count: 2;
+    }
+}
+
 @media (max-width: 500px) {
     .gal {
         -webkit-column-count: 1;

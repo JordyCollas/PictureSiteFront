@@ -6,6 +6,7 @@ import { Picture } from '../models/Picture';
 import { DomSanitizer } from '@angular/platform-browser';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll/src';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { AlertService } from '../services/alert/alert.service';
 
 @Component({
   selector: 'app-pictures',
@@ -20,26 +21,34 @@ export class PicturesComponent implements OnInit {
   private index = 0;
   private imageStrings: string[] = [];
   private indexAddition = 15;
-
+  loading = false;
+  
 
   constructor(
     private pictureService: PictureService, 
     private route: ActivatedRoute, 
     private scrollModule: InfiniteScrollModule,
-    private spinnerService: Ng4LoadingSpinnerService) 
+    private spinnerService: Ng4LoadingSpinnerService,
+    private alertService: AlertService) 
     {
     this.sub = this.route.params.subscribe(params => {
       this.folderName = params['folderName'];
     });
   }
 
-  ngOnInit() {
+  ngOnInit() {          
+    this.loading = true;
     this.spinnerService.show();    
-    this.pictureService.GetAllPicturesFromFolder(this.folderName).subscribe(pictures => this.pictures = pictures, null, () => this.spinnerService.hide());
+    this.pictureService.GetAllPicturesFromFolder(this.folderName).subscribe(pictures => this.pictures = pictures,
+      error => {
+          this.alertService.error(error.statusText);
+          this.loading = false;
+          this.spinnerService.hide()
+      }, () => this.spinnerService.hide());
   }
 
   ConvertToimage(image: Uint8Array) {
-    return 'data:image/png;base64,' + image;
+    return 'data:image/jpeg;base64,' + image;
   }
 
   OnScroll() {

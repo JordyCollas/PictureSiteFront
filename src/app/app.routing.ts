@@ -17,7 +17,7 @@ const appRoutes: Routes = [
    { path: 'registerSuccess', component: RegisterSuccessComponent},
    { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
    { path: 'folders', component: FoldersComponent},
-   { path: 'pictures', component: PicturesComponent},   
+   { path: 'pictures', component: PicturesComponent, canActivate:[AuthGuard]},   
    { path: 'pictures/:folderName', component: PicturesComponent},
    
    // otherwise redirect to home
