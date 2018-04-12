@@ -28,14 +28,14 @@ export class PicturesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pictureService.GetAllPicturesFromFolder(this.folderName).subscribe(pictures => this.pictures = pictures, null, () => this.onScroll());
+    this.pictureService.GetAllPicturesFromFolder(this.folderName).subscribe(pictures => this.pictures = pictures, null, () => this.OnScroll());
   }
 
   ConvertToimage(image: Uint8Array) {
     return 'data:image/png;base64,' + image;
   }
 
-  onScroll() {
+  OnScroll() {
     var amountPictures = this.pictures.length;
 
     if (this.index === amountPictures) {

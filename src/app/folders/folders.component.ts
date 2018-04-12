@@ -25,7 +25,7 @@ export class FoldersComponent implements OnInit {
   }
 
   GetPicturesFromFolder(folder: string){
-    this.router.navigate(['/pictures', {folderName: folder}])
+    this.router.navigate(['/pictures', {folderName: folder+"_Cropped"}])
   }
 
   GetPhoto(folder: FolderWithPicture){

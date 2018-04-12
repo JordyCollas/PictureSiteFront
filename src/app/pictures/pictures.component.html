@@ -1,8 +1,8 @@
-<div class="container-fluid"  >
+<div class="container-fluid">
     <div class="row">
-        <div class="gal" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="300" [scrollWindow]="true" (scrolled)="onScroll()">
-            <div *ngFor="let imageString of imageStrings">
-                <img [src]="imageString" alt="">
+        <div class="gal">
+            <div *ngFor="let picture of pictures">
+                <img [src]="ConvertToimage(picture.image)" alt="">
             </div>
         </div>
     </div>
