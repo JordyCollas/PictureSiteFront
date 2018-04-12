@@ -1,2 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+ h4{
+    font-weight: 300;
+    color: #11181f;
+    margin: 0px 0px 15px 0px;
+    font-family: 'Lato', sans-serif;
+}
+
+p {
+    margin: 0 0 20px;
+    line-height: 1.7;
+}
+
+p:last-child {
+    margin: 0px;
+}
+
+.block {
+    margin-bottom: 20px;
+}
+
+.block-content {
+    position: absolute;
+    background-color: rgba(17, 24, 31, 0.8);
+    bottom: 0px;
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+    padding: 30px;
+}
+
+.block-img {
+    position: relative;
+}
+
+.block-img img {
+    width: 100%;
+}
+
+.block-meta {
+    color: #9da4aa;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+
+.block-img:hover {
+    opacity: .8;
+}
+
+.block-img:hover .team-content {
+    opacity: 0;
+}

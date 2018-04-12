@@ -1,7 +1,9 @@
-<div class="col-md-6 col-md-offset-3">
-  <ul>
-      <li *ngFor="let picture of pictures | async">
-          {{picture}}
-      </li>
-  </ul>
+<div class="container-fluid"  >
+    <div class="row">
+        <div class="gal" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="300" [scrollWindow]="true" (scrolled)="onScroll()">
+            <div *ngFor="let imageString of imageStrings">
+                <img [src]="imageString" alt="">
+            </div>
+        </div>
+    </div>
 </div>
