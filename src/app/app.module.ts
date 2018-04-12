@@ -23,6 +23,7 @@ import { FoldersComponent } from './folders/folders.component';
 import { PictureService } from './services/picture/picture.service';
 import { PicturesComponent } from './pictures/pictures.component';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll/src';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 
 // @NgModule decorator with its metadata
@@ -43,6 +44,7 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll/src';
         BrowserModule,
         FormsModule,
         HttpModule,
+        Ng4LoadingSpinnerModule.forRoot(),
         Routing
     ],
     providers: [
