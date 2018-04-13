@@ -2,7 +2,7 @@
     <div class="row">
         <div class="gal">
             <div *ngFor="let picture of pictures">
-                <img class="fancybox" [src]="ConvertToimage(picture.image)" alt="">
+                <img [src]="ConvertToimage(picture.image)" alt="">
             </div>
         </div>
     </div>

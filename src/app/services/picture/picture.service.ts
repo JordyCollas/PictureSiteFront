@@ -25,7 +25,7 @@ export class PictureService implements OnInit {
     let getAllPicturesFromFolder = new Folder();
     getAllPicturesFromFolder.folderName = folderName;
 
-    this.currentFolder$.next(folderName);
+    this.currentFolder$.next(folderName.replace("_Cropped", ""));
 
     return this.http.post(this.config.apiUrl + '/pictures/', getAllPicturesFromFolder, this.jwt()).map((response: Response) => response.json());
 
