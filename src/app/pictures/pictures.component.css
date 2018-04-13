@@ -1,4 +1,6 @@
 .gal {
+    padding:0;
+    background-color: black;
     -webkit-column-count: 5;
     /* Chrome, Safari, Opera */
     -moz-column-count: 5;

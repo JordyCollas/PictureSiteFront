@@ -1,4 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+    
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
       <a class="nav-link" href="#">Home</a>
@@ -6,10 +11,14 @@
     <li class="nav-item active">
       <a class="nav-link" (click)="Folders()">Pictures</a>
     </li>
+    <li *ngIf="(authService.isAdmin())" class="nav-item active">
+      <a class="nav-link" (click)="GoToAdmin()">Admin</a>
+    </li>
   </ul>
-  <!-- <button class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Register()">Register</button>  -->
   <button *ngIf="!(authService.isLoggedIn())" class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Register()">Register</button>
   <button *ngIf="!(authService.isLoggedIn())" class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Login()">Login</button>
 
   <button *ngIf="(authService.isLoggedIn())" class="btn btn-sm my-2 my-sm-0" type="submit" (click)="Logout()">Logout</button>
+  </div>
 </nav>
+<p class="h3 text-center fixed-top"> {{currentFolder$ | async}}</p>

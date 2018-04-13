@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { PictureService } from '../services/picture/picture.service';
+import { Picture } from '../models/Picture';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +12,11 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;
-
-  constructor(private router: Router, private authService: AuthenticationService) {}
+  currentFolder$: Observable<string>;
+  constructor(private router: Router, private authService: AuthenticationService, private pictureService: PictureService) {}
 
   ngOnInit(): void {
-    this.isLoggedIn$ = this.authService.isLoggedIn$;
+    this.currentFolder$ = this.pictureService.currentFolder$;
   }
   
 
@@ -31,8 +32,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  GoToAdmin(){
+    this.router.navigate(['/admin'])
+  }
+
   Logout(){
     this.authService.logout();
   }
+
 
 }

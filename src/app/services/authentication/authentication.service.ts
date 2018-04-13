@@ -10,18 +10,20 @@ import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class AuthenticationService  implements OnInit  {
-
-    public isLoggedIn$: Subject<boolean>;
-
+export class AuthenticationService  {
     constructor(private http: Http, private config: AppConfig, private router: Router) { 
-        this.isLoggedIn$ = new Subject<boolean>();
     }
  
-    ngOnInit(){ }
-
     isLoggedIn(): boolean {
         return !!(localStorage.getItem('currentUser'));
+    }
+
+    isAdmin(): boolean {
+        if(!(localStorage.getItem('currentUser'))){
+            return false;
+        }
+        var user = JSON.parse(localStorage.getItem('currentUser'));     
+        return user["isAdmin"] === true;
     }
 
     login(username: string, password: string) {
@@ -32,7 +34,6 @@ export class AuthenticationService  implements OnInit  {
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
-                    this.isLoggedIn$.next(true);
                }
             });
     }
@@ -40,7 +41,6 @@ export class AuthenticationService  implements OnInit  {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
-        this.isLoggedIn$.next(false);
         this.router.navigate(['/login']);
     }
 }

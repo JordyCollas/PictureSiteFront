@@ -2,13 +2,7 @@
 
 @import '~bootstrap/dist/css/bootstrap.min.css';
 body {
-    padding-top: 60px;
-}
-
-@media (max-width: 1000px) {
-    body {
-        padding-top: 100px;
-    }
+    padding-top: 56px;
 }
 
 h4 {
