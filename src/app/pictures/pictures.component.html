@@ -2,6 +2,7 @@
     <div class="row">
         <div class="gal">
             <div *ngFor="let picture of pictures">
+                <i class="material-icons md-48 white" (click)="DownloadPicture(picture)">file_download</i>
                 <img [src]="ConvertToimage(picture.image)" alt="">
             </div>
         </div>
