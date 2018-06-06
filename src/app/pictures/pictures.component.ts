@@ -71,4 +71,8 @@ export class PicturesComponent implements OnInit {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-}
+
+  DownloadPicture(picture: Picture)
+{
+  this.pictureService.DownloadPicture(this.folderName, picture.pictureName);
+}}

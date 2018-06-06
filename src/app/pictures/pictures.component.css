@@ -1,5 +1,10 @@
+.material-icons.white {
+    color: white;
+    position:  absolute;
+}
+
 .gal {
-    padding:0;
+    padding: 0;
     background-color: black;
     -webkit-column-count: 5;
     /* Chrome, Safari, Opera */
@@ -22,6 +27,7 @@
         column-count: 3;
     }
 }
+
 @media (max-width: 700px) {
     .gal {
         -webkit-column-count: 2;

@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { AppConfig } from '../../app.config';
 import { Folder } from '../../models/Folder';
 import { Subject } from 'rxjs';
+import { PictureToDownload } from '../../models/PictureToDownload';
 
 @Injectable()
 export class PictureService implements OnInit {
@@ -27,8 +28,16 @@ export class PictureService implements OnInit {
 
     this.currentFolder$.next(folderName.replace("_Cropped", ""));
 
-    return this.http.post(this.config.apiUrl + '/pictures/', getAllPicturesFromFolder, this.jwt()).map((response: Response) => response.json());
+    return this.http.post(this.config.apiUrl + '/pictures/getAllPicturesFromFolder', getAllPicturesFromFolder, this.jwt()).map((response: Response) => response.json());
 
+  }
+
+  DownloadPicture(folderName: string, pictureName: string) {
+    let pictureToDownload = new PictureToDownload();
+    pictureToDownload.folderName = folderName;
+    pictureToDownload.pictureName = pictureName;
+
+      this.http.post(this.config.apiUrl + '/pictures/download', pictureToDownload, this.jwt()).map((response: Response) => response.json());
   }
 
   ngOnDestroy() {
