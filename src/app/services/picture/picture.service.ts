@@ -37,7 +37,7 @@ export class PictureService implements OnInit {
     pictureToDownload.folderName = folderName;
     pictureToDownload.pictureName = pictureName;
 
-      this.http.post(this.config.apiUrl + '/pictures/download', pictureToDownload, this.jwt()).map((response: Response) => response.json());
+    return this.http.post(this.config.apiUrl + '/pictures/download', pictureToDownload, this.jwt()).map((response: Response) => response.json());
   }
 
   ngOnDestroy() {

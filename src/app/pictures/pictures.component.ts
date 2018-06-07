@@ -68,11 +68,17 @@ export class PicturesComponent implements OnInit {
     this.index = this.index + this.indexAddition;
   }
 
+  DownloadPicture(picture: Picture ){
+    this.pictureService.DownloadPicture(this.folderName, picture.pictureName).subscribe( error => {
+      this.alertService.error(error.statusText);
+      this.loading = false;
+      this.spinnerService.hide()
+    });
+  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
-  DownloadPicture(picture: Picture)
-{
-  this.pictureService.DownloadPicture(this.folderName, picture.pictureName);
-}}
+
+}
