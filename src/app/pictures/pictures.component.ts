@@ -7,6 +7,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll/src';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { AlertService } from '../services/alert/alert.service';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-pictures',
@@ -69,8 +70,12 @@ export class PicturesComponent implements OnInit {
   }
 
   DownloadPicture(picture: Picture ){
-    this.pictureService.DownloadPicture(this.folderName, picture.pictureName).subscribe( error => {
-      this.alertService.error(error.statusText);
+
+    let uncroppedFolderName = this.folderName.replace("_Cropped","");
+
+    this.pictureService.DownloadPicture(uncroppedFolderName, picture.pictureName).subscribe(fileData => FileSaver.saveAs(fileData, picture.pictureName),
+    error => {
+      this.alertService.error("error downloading image");
       this.loading = false;
       this.spinnerService.hide()
     });

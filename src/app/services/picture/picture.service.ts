@@ -1,9 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http, Headers, RequestOptions, Response, ResponseContentType } from '@angular/http';
 import { AppConfig } from '../../app.config';
 import { Folder } from '../../models/Folder';
 import { Subject } from 'rxjs';
 import { PictureToDownload } from '../../models/PictureToDownload';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PictureService implements OnInit {
@@ -32,12 +33,16 @@ export class PictureService implements OnInit {
 
   }
 
-  DownloadPicture(folderName: string, pictureName: string) {
+  DownloadPicture(folderName: string, pictureName: string):Observable<Blob> {
     let pictureToDownload = new PictureToDownload();
     pictureToDownload.folderName = folderName;
     pictureToDownload.pictureName = pictureName;
+   
+    let headers = this.jwt()
+    headers.responseType = ResponseContentType.Blob
 
-    return this.http.post(this.config.apiUrl + '/pictures/download', pictureToDownload, this.jwt()).map((response: Response) => response.json());
+    return this.http.post(this.config.apiUrl + '/pictures/download', pictureToDownload, headers).map((response: Response) => <Blob>response.blob());
+    ;
   }
 
   ngOnDestroy() {
