@@ -28,6 +28,24 @@ export class UserService {
     }
     // private helper methods
  
+    IsUserAdmin():boolean{
+        var user = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (user !== null && user["isAdmin"] === true) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    IsLoggedIn():boolean{
+        if(localStorage.getItem('currentUser')) {
+            // logged in so return true
+            return true;
+        }else{
+            return false
+        }
+    }
     private jwt() {
         // create authorization header with jwt token
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
