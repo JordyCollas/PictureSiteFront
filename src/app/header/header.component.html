@@ -8,13 +8,13 @@
     
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link link" href="#">Home</a>
     </li>
     <li class="nav-item active">
-      <a class="nav-link" (click)="Folders()">Pictures</a>
+      <a class="nav-link link"  (click)="Folders()">Pictures</a>
     </li>
     <li *ngIf="(authService.isAdmin())" class="nav-item active">
-      <a class="nav-link" (click)="GoToAdmin()">Admin</a>
+      <a class="nav-link link"  (click)="GoToAdmin()">Admin</a>
     </li>
   </ul>
   

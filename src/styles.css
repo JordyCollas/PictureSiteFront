@@ -56,3 +56,7 @@ p:last-child {
 .block-img:hover .team-content {
     opacity: 0;
 }
+
+.link{
+    cursor: pointer;
+}
