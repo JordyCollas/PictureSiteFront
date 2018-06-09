@@ -8,21 +8,48 @@ import { AppConfig } from '../../app.config';
 import { Observer } from 'rxjs/Observer';
 import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
+import { User } from '../../models/User';
 
 @Injectable()
-export class AuthenticationService  {
-    constructor(private http: Http, private config: AppConfig, private router: Router) { 
+export class AuthenticationService {
+    constructor(private http: Http, private config: AppConfig, private router: Router) {
     }
- 
-    isLoggedIn(): boolean {
-        return !!(localStorage.getItem('currentUser'));
+
+    IsUserAdmin(): boolean {
+        var user = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (user !== null && user["isAdmin"] === true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    IsLoggedIn(): boolean {
+        if (localStorage.getItem('currentUser')) {
+            // logged in so return true
+            return true;
+        } else {
+            return false
+        }
+    }
+
+    HasDownloadRights(): boolean {
+        var user = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (user !== null && user["canDownload"] === true) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     isAdmin(): boolean {
-        if(!(localStorage.getItem('currentUser'))){
+        if (!(localStorage.getItem('currentUser'))) {
             return false;
         }
-        var user = JSON.parse(localStorage.getItem('currentUser'));     
+        var user = JSON.parse(localStorage.getItem('currentUser'));
         return user["isAdmin"] === true;
     }
 
@@ -34,9 +61,10 @@ export class AuthenticationService  {
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
-               }
+                }
             });
     }
+
 
     logout() {
         // remove user from local storage to log user out
