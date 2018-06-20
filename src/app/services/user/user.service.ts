@@ -4,6 +4,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { AppConfig } from '../../app.config';
 import { User } from '../../models/User';
 import { Observable } from 'rxjs/Observable';
+import { ResetPasswordRequest } from '../../models/RequestResetPassword';
 
 
 
@@ -36,6 +37,8 @@ export class UserService {
         return this.http.post(this.config.apiUrl + '/users/update', users, this.jwt());
     }
 
-  
+    RequestResetPassword(resetRequest: ResetPasswordRequest){
+        return this.http.post(this.config.apiUrl + "/users/RequestResetPassword", resetRequest, this.jwt())
+    }
 
 }

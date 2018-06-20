@@ -42,7 +42,6 @@ export class PictureService implements OnInit {
     headers.responseType = ResponseContentType.Blob
 
     return this.http.post(this.config.apiUrl + '/pictures/download', pictureToDownload, headers).map((response: Response) => <Blob>response.blob());
-    ;
   }
 
   ngOnDestroy() {

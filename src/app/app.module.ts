@@ -24,6 +24,8 @@ import { PictureService } from './services/picture/picture.service';
 import { PicturesComponent } from './pictures/pictures.component';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll/src';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import { MailSentComponent } from './login/forgot-password/mail-sent/mail-sent.component';
 
 
 // @NgModule decorator with its metadata
@@ -38,7 +40,8 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
         HeaderComponent, 
         AdminComponent, 
         FoldersComponent, 
-        PicturesComponent
+        PicturesComponent, 
+        ForgotPasswordComponent, MailSentComponent
     ],
     imports: [
         BrowserModule,

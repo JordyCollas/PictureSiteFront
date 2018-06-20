@@ -9,6 +9,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './guards/admin.guard';
 import { FoldersComponent } from './folders/folders.component';
 import { PicturesComponent } from './pictures/pictures.component';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import { MailSentComponent } from './login/forgot-password/mail-sent/mail-sent.component';
 
 const appRoutes: Routes = [
    { path: '', component: HomeComponent},
@@ -19,6 +21,10 @@ const appRoutes: Routes = [
    { path: 'folders', component: FoldersComponent},
    { path: 'pictures', component: PicturesComponent, canActivate:[AuthGuard]},   
    { path: 'pictures/:folderName', component: PicturesComponent},
+   { path: 'forgotPasword', component: ForgotPasswordComponent},
+   { path: 'mailSent', component: MailSentComponent},
+
+   
    
    // otherwise redirect to home
    { path: '**', redirectTo: '' }
