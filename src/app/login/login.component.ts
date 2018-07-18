@@ -36,7 +36,9 @@ export class LoginComponent implements OnInit {
                     this.router.navigateByUrl(this.returnUrl);
                 },
                 error => {
-                    this.alertService.error(error._body);
+                    console.log(error.json())
+                    this.alertService.error(`Login or password are incorrect. If you forgot your password, you can change it by clicking the button "Forgot password?".
+                      If you are sure about your Username, contact the administrator.`);
                     this.loading = false;
                 });
     }
